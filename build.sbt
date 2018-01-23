@@ -49,6 +49,13 @@ lazy val testing = libraryProject("testing")
   )
   .dependsOn(core)
 
+lazy val sigma = libraryProject("sigma")
+  .dependsOn(core, testing % "test->test")
+  .settings(
+    description := "Documentation framework for http4s",
+    macroParadiseSetting
+  )
+
 // Defined outside core/src/test so it can depend on published testing
 lazy val tests = libraryProject("tests")
   .settings(
